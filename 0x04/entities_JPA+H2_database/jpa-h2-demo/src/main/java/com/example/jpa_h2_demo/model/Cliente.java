@@ -8,6 +8,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Cliente")
 public class Cliente {
@@ -18,9 +20,11 @@ public class Cliente {
     private int idade;
     private String email;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Telefone> telefones;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos;
 
